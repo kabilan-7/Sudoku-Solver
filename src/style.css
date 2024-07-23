@@ -1,0 +1,155 @@
+/* src/App.css */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #e0e0e0; /* Light background for the whole page */
+  }
+  
+  .App {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff; /* White background for the App container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sudoku-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 50px);
+    grid-template-rows: repeat(9, 50px);
+    gap: 0; /* No gaps between cells */
+    border: 3px solid black; /* Outer border */
+    background-color: #fff; /* Background color for the grid */
+  }
+  
+  .sudoku-row {
+    display: contents; /* Ensure the grid layout is applied properly */
+  }
+  
+  input {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 1.5em;
+    border: 1px solid #000000; /* Default border for cells */
+    box-sizing: border-box; /* Include border in width and height */
+    background-color: #fafafa; /* Light gray background for cells */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
+  
+  input.empty {
+    background-color: #f9f9f9; /* Slightly different background for empty cells */
+  }
+  
+  input:focus {
+    outline: none;
+    border: 1px solid #66afe9;
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+    background-color: #fff; /* Background color change on focus */
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff; /* Primary button color */
+    color: #fff;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Dark lines for 3x3 subgrids */
+  .sudoku-grid input:nth-of-type(27n + 1) {
+    border-left: 3px solid black;
+  }
+
+  
+  .sudoku-grid input:nth-of-type(27n + 9) {
+    border-right: 3px solid black;
+  }
+  
+  .sudoku-row:nth-of-type(3n) input {
+    border-bottom: 3px solid black;
+  }
+  
+  .sudoku-row:nth-of-type(3n + 1) input:nth-of-type(3n) {
+    border-right: 3px solid black;
+  }
+  
+  .sudoku-row:nth-of-type(3n + 2) input:nth-of-type(3n) {
+    border-right: 3px solid black;
+  }
+  
+  .sudoku-row:nth-of-type(3n + 3) input:nth-of-type(3n) {
+    border-right: 3px solid black;
+  }
+ 
+  .sudoku-row:nth-of-type(1) input {
+    border-top: 3px solid black;
+  }
+  
+  .sudoku-row:nth-of-type(1) input:nth-of-type(3n) {
+    border-top: 3px solid black;
+  }
+  input:not(.empty):not(:focus):not(:placeholder-shown) {
+    background-color: #e0ffe0; /* Light green background for cells with entered values */
+     /* Green border to highlight entered values */
+  }
+  /* Media Query for Tablets and Small Screens */
+@media (max-width: 768px) {
+    .sudoku-grid {
+        grid-template-columns: repeat(9, 40px);
+        grid-template-rows: repeat(9, 40px);
+    }
+    
+    input {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+    .sudoku-grid {
+        grid-template-columns: repeat(9, 30px);
+        grid-template-rows: repeat(9, 30px);
+    }
+    
+    input {
+        width: 30px;
+        height: 30px;
+        font-size: 1em;
+    }
+
+    button {
+        padding: 6px 12px;
+        font-size: 0.8em;
+    }
+
+    .App {
+        padding: 10px;
+    }
+}
